@@ -5,14 +5,13 @@ from pynput import keyboard
 
 
 broker="127.0.0.1" # adresa MQTT brokeru
-client = paho.Client("meal-notification") # Název clienta
+client = paho.Client("meal-notification")
 
 
 def on_release(key):
         return
 
-# Callback, který se zavolá při příjmutí zprávy na topicu, na který je subscribe
-def on_message(client, userdata, message):
+def on_message():
         date = datetime.datetime.now()
         #msg = str(message.payload.decode("utf-8")) # Parse zprávy z do klasického stringu
 
@@ -28,7 +27,7 @@ def on_message(client, userdata, message):
                 print("Pojd dolů")
 
     
-def on_press(key):
+def on_press():
         on_message(client, "", "")
 
 def connect():
